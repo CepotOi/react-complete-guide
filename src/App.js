@@ -12,7 +12,11 @@ function App() {
     <>
       <h2>Let's get started!</h2>
       {expenses.map((expense) => (
-        <ExpenseItem key={expense.id} date={expense.date} title={expense.title} amount={expense.amount} />
+        <ExpenseItem
+          key={expense.id}
+          date={expense.date}
+          title={expense.title}
+          amount={expense.amount} />
       ))}
     </>
   );
