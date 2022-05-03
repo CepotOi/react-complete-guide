@@ -17,7 +17,11 @@ const ExpenseForm = () => {
       date: new Date(expense.date),
     };
 
-    console.log(expenseData);
+    return setExpense({
+      title: '',
+      amount: '',
+      date: '',
+    });
   };
 
   const inputChangeHandler = event => {
