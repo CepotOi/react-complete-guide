@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
@@ -9,9 +10,17 @@ const App = () => {
     { id: 'e4', title: 'AE86', amount: 3500, date: new Date(2020, 2, 12) },
   ];
 
+  const [addExpense, setExpense] = useState(expenses);
+
+
+  const getExpenseData = (expenseData) => {
+    // setExpense(expenseData);
+    console.log(expenseData);
+  };
+
   return (
     <>
-      <NewExpense />
+      <NewExpense onAddExpense={getExpenseData} />
       <Expenses expenses={expenses} />
     </>
   );

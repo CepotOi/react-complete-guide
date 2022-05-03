@@ -1,10 +1,22 @@
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
-const NewExpense = () => {
+const NewExpense = (props) => {
+  // get the expense data from the child component
+  const submitExpenseDataHandler = (submitExpenseData) => {
+    const expenseData = {
+      ...submitExpenseData,
+      id: `e${Math.floor(
+        Math.random() * Math.floor(Math.random() * Date.now())
+      ).toString()}`,
+    };
+
+    props.onAddExpense(expenseData);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSubmitExpenseData={submitExpenseDataHandler} />
     </div>
   );
 };
