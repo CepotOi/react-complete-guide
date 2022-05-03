@@ -1,6 +1,6 @@
 import Expenses from "./components/Expenses/Expenses";
 
-export default function App() {
+const App = () => {
   const expenses = [
     { id: 'e1', title: 'GTR 34', amount: 5000, date: new Date(2022, 4, 20) },
     { id: 'e2', title: 'GTR 32', amount: 4500, date: new Date(2021, 7, 27) },
@@ -10,7 +10,9 @@ export default function App() {
 
   return (
     <>
-      <Expenses items={expenses} />
+      <Expenses expenses={expenses} />
     </>
   );
-}
+};
+
+export default App;

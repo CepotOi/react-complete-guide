@@ -2,18 +2,21 @@ import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
 
-export default function Expenses(props) {
+// Approach Orang Lain
+const Expenses = ({ expenses }) => {
   return (
     <Card className="expenses" >
       {
-        props.items.map((item) => (
+        expenses.map((expenseItem) => (
           <ExpenseItem
-            key={item.id}
-            date={item.date}
-            title={item.title}
-            amount={item.amount} />
+            key={expenseItem.id}
+            date={expenseItem.date}
+            title={expenseItem.title}
+            amount={expenseItem.amount} />
         ))
       }
     </Card >
   );
-}
+};
+
+export default Expenses;
