@@ -12,19 +12,18 @@ const Expenses = ({ expenses }) => {
   };
 
   const filteredExpenses = expenses.filter((expense) => expense.date.getFullYear() === parseInt(filteredYear));
+  let expensesContent = <h2>No expenses</h2>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem key={expense.id} expenseItem={expense} />
+    ));
+  }
 
   return (
     <Card className="expenses">
       <ExpensesFilter selectedYear={filteredYear} onFilterExpenseYear={filterExpenseYearHandler} />
-      {filteredExpenses.length === 0 && (
-        <h1>No Expenses</h1>
-      )}
-      {filteredExpenses.map((expenseItem) => (
-        <ExpenseItem
-          key={expenseItem.id}
-          expenseItem={expenseItem}
-        />
-      ))}
+      {expensesContent}
     </Card>
   );
 };
