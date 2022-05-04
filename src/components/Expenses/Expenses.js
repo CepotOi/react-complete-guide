@@ -16,6 +16,9 @@ const Expenses = ({ expenses }) => {
   return (
     <Card className="expenses">
       <ExpensesFilter selectedYear={filteredYear} onFilterExpenseYear={filterExpenseYearHandler} />
+      {filteredExpenses.length === 0 && (
+        <h1>No Expenses</h1>
+      )}
       {filteredExpenses.map((expenseItem) => (
         <ExpenseItem
           key={expenseItem.id}
