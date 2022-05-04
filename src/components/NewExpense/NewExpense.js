@@ -11,6 +11,7 @@ const NewExpense = (props) => {
       ).toString()}`,
     };
 
+    // Pass the expense data to the parent component
     props.onAddExpense(expenseData);
   };
 

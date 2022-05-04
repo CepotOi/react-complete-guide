@@ -10,18 +10,16 @@ const App = () => {
     { id: 'e4', title: 'AE86', amount: 3500, date: new Date(2020, 2, 12) },
   ];
 
-  const [addExpense, setExpense] = useState(expenses);
+  const [expense, setExpense] = useState(expenses);
 
-
-  const getExpenseData = (expenseData) => {
-    // setExpense(expenseData);
-    console.log(expenseData);
+  const addExpenseHandler = (expenseData) => {
+    setExpense(prevState => [...prevState, expenseData]);
   };
 
   return (
     <>
-      <NewExpense onAddExpense={getExpenseData} />
-      <Expenses expenses={expenses} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses expenses={expense} />
     </>
   );
 };
