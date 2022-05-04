@@ -9,25 +9,20 @@ const Expenses = ({ expenses }) => {
 
   const filterExpenseYearHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-    // console.log(filteredYear);
   };
 
+  const filteredExpenses = expenses.filter((expense) => expense.date.getFullYear() === parseInt(filteredYear));
+
   return (
-    <Card className="expenses" >
+    <Card className="expenses">
       <ExpensesFilter selectedYear={filteredYear} onFilterExpenseYear={filterExpenseYearHandler} />
-      {expenses.map((expenseItem) =>
-      (
+      {filteredExpenses.map((expenseItem) => (
         <ExpenseItem
           key={expenseItem.id}
-          // id={expenseItem.id}
-          // date={expenseItem.date}
-          // title={expenseItem.title}
-          // amount={expenseItem.amount} 
           expenseItem={expenseItem}
         />
-      )
-      )};
-    </Card >
+      ))}
+    </Card>
   );
 };
 
