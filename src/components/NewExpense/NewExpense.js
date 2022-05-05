@@ -20,11 +20,13 @@ const NewExpense = (props) => {
 
     // Pass the expense data to the parent component
     props.onAddExpense(expenseData);
+    return showFormHandler(!isShowForm);
   };
 
   return (
     <div className="new-expense">
-      {!isShowForm ? (<button onClick={showFormHandler}>Add New Expense</button>
+      {!isShowForm ? (
+        <button onClick={showFormHandler}>Add New Expense</button>
       ) : (
         <ExpenseForm onSubmitExpenseData={submitExpenseDataHandler} cancelShowForm={showFormHandler} />
       )}

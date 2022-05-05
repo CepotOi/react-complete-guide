@@ -28,8 +28,6 @@ const ExpenseForm = (props) => {
 
     // Pass the expense data to the parent component
     props.onSubmitExpenseData(expenseData);
-
-    hideFormHandler();
     return resetExpense();
   };
 
