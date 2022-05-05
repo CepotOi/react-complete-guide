@@ -4,7 +4,7 @@ const ExpensesFilter = (props) => {
   const years = [2022, 2021, 2020, 2019];
 
   const filterChangeHandler = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
 
     props.onFilterExpenseYear(value);
   };

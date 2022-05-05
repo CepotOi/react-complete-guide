@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
 const NewExpense = (props) => {
+  const [isShowForm, setIsShowForm] = useState(false);
+
+  const showFormHandler = () => {
+    setIsShowForm(!isShowForm);
+  };
+
   // get the expense data from the child component
   const submitExpenseDataHandler = (submitExpenseData) => {
     const expenseData = {
@@ -17,7 +24,10 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
-      <ExpenseForm onSubmitExpenseData={submitExpenseDataHandler} />
+      {!isShowForm ? (<button onClick={showFormHandler}>Add New Expense</button>
+      ) : (
+        <ExpenseForm onSubmitExpenseData={submitExpenseDataHandler} cancelShowForm={showFormHandler} />
+      )}
     </div>
   );
 };

@@ -2,11 +2,20 @@ import { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-  const [expense, setExpense] = useState({
+  const INITIAL_EXPENSE = {
     title: '',
     amount: '',
     date: '',
-  });
+  };
+  const [expense, setExpense] = useState(INITIAL_EXPENSE);
+
+  const resetExpense = () => {
+    setExpense(INITIAL_EXPENSE);
+  };
+
+  const hideFormHandler = () => {
+    props.cancelShowForm(false);
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -20,14 +29,11 @@ const ExpenseForm = (props) => {
     // Pass the expense data to the parent component
     props.onSubmitExpenseData(expenseData);
 
-    return setExpense({
-      title: '',
-      amount: '',
-      date: '',
-    });
+    hideFormHandler();
+    return resetExpense();
   };
 
-  const inputChangeHandler = event => {
+  const inputChangeHandler = (event) => {
     const { name, value } = event.target;
 
     setExpense(prevState => ({
@@ -56,6 +62,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={hideFormHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
