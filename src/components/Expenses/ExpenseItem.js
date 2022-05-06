@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 import './ExpenseItem.css';
 
 const ExpenseItem = ({ expenseItem }) => {
-  // const [title, setTitle] = useState(expenseItem.title);
-
   return (
     <Card className="expense-item">
       <ExpenseDate date={expenseItem.date} />
